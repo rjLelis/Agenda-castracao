@@ -22,9 +22,9 @@ public class CastracaoDao {
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
-			
-			psmt.setString(1, castracao.getCpf().substring(0, 3) + "." 
-			+ castracao.getCpf().substring(3, 6) + "." + castracao.getCpf().substring(6, 9) + "-" + castracao.getCpf().substring(9));
+
+			psmt.setString(1, castracao.getCpf().substring(0, 3) + "." + castracao.getCpf().substring(3, 6) + "."
+					+ castracao.getCpf().substring(6, 9) + "-" + castracao.getCpf().substring(9));
 			psmt.setString(2, castracao.getNomeDono());
 			psmt.setString(3, castracao.getTelefone());
 			psmt.setString(4, castracao.getEndereco());
@@ -38,7 +38,6 @@ public class CastracaoDao {
 			psmt.execute();
 
 			psmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -50,7 +49,7 @@ public class CastracaoDao {
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Castracao castracao = new Castracao();
 				castracao.setCpf(rs.getString("cpf"));
 				castracao.setNomeDono(rs.getString("nome_dono"));
@@ -60,28 +59,80 @@ public class CastracaoDao {
 				castracao.setEspecieAnimal(rs.getString("especie_animal"));
 				castracao.setRacaAnimal(rs.getString("raca_animal"));
 				castracao.setAtendido(rs.getBoolean("atendido"));
-				
+
 				Calendar data = Calendar.getInstance();
 				data.setTime(rs.getDate("dataAtendimento"));
 				castracao.setDataAtendimento(data);
 				data.setTime(rs.getTime("horaAtendimento"));
 				castracao.setHoraAtendimento(data);
-				
+
 				castracoes.add(castracao);
 			}
-			
+
 			psmt.close();
 			rs.close();
-			conn.close();
-			
-		} catch(SQLException e) {
+
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 		return castracoes;
-		
+
 	}
-	
+
+	public Castracao listar(String cpf) {
+		String sql = "SELECT * FROM castracao WHERE cpf=?";
+		Castracao castracao = null;
+		try {
+			PreparedStatement psmt = conn.prepareStatement(sql);
+			psmt.setString(1, cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-"
+					+ cpf.substring(9));
+			ResultSet rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				castracao = new Castracao();
+				castracao.setCpf(rs.getString("cpf"));
+				castracao.setNomeDono(rs.getString("nome_dono"));
+				castracao.setTelefone(rs.getString("telefone"));
+				castracao.setEndereco(rs.getString("endereco"));
+				castracao.setNomeAnimal(rs.getString("nome_animal"));
+				castracao.setEspecieAnimal(rs.getString("especie_animal"));
+				castracao.setRacaAnimal(rs.getString("raca_animal"));
+				castracao.setAtendido(rs.getBoolean("atendido"));
+
+				Calendar data = Calendar.getInstance();
+				data.setTime(rs.getDate("dataAtendimento"));
+				castracao.setDataAtendimento(data);
+				data.setTime(rs.getTime("horaAtendimento"));
+				castracao.setHoraAtendimento(data);
+
+			}
+			psmt.close();
+			rs.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return castracao;
+	}
+
+	public void finalizarAtendimento(String cpf) {
+		String sql = "UPDATE castracao SET atendido=? WHERE cpf=?";
+		try {
+			PreparedStatement psmt = conn.prepareStatement(sql);
+			psmt.setBoolean(1, true);
+			psmt.setString(2, cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-"
+					+ cpf.substring(9));
+
+			psmt.execute();
+
+			psmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
 	public void altera(Castracao castracao) {
 		String sql = "UPDATE castracao SET nome_dono=?, telefone=?, endereco=?, nome_animal=?,especie_animal=?,raca_animal=?"
 				+ ", atendido=?, dataAtendimento=?, horaAtendimento=? WHERE cpf=?";
@@ -96,18 +147,33 @@ public class CastracaoDao {
 			psmt.setBoolean(7, castracao.isAtendido());
 			psmt.setDate(8, new Date(castracao.getDataAtendimento().getTimeInMillis()));
 			psmt.setTimestamp(9, new Timestamp(castracao.getHoraAtendimento().getTimeInMillis()));
-			psmt.setString(10, castracao.getCpf().substring(0, 3) + "." 
-					+ castracao.getCpf().substring(3, 6) + "." + castracao.getCpf().substring(6, 9) + "-" + castracao.getCpf().substring(9));
-			
+			psmt.setString(10, castracao.getCpf().substring(0, 3) + "." + castracao.getCpf().substring(3, 6) + "."
+					+ castracao.getCpf().substring(6, 9) + "-" + castracao.getCpf().substring(9));
+
 			psmt.execute();
-			
+
 			psmt.close();
-			conn.close();
-			
-		} catch(SQLException e) {
+
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
+	}
+
+	public void remove(String cpf) {
+		String sql = "DELETE FROM castracao WHERE cpf=?";
+		try {
+			PreparedStatement psmt = conn.prepareStatement(sql);
+			psmt.setString(1, cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-"
+					+ cpf.substring(9));
+
+			psmt.execute();
+
+			psmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 
 }
