@@ -13,7 +13,6 @@ public class Castracao {
 	private String racaAnimal;
 	private boolean atendido;
 	private Calendar dataAtendimento;
-
 	private Calendar horaAtendimento;
 
 	public String getCpf() {
