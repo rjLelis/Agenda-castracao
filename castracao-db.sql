@@ -1,8 +1,8 @@
 /*Criação da tabelas de castração*/
 create table castracao(
-    cpf varchar(11),
+    cpf varchar(14),
     nome_dono varchar(255) not null,
-    telefone varchar(9) not null,
+    telefone varchar(10) not null,
     endereco varchar(255) not null,
     nome_animal varchar(255) not null,
     especie_animal ENUM('Cachorro', 'Gato') not null,
