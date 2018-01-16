@@ -9,5 +9,6 @@ create table castracao(
     raca_animal varchar(255) not null,
     atendido boolean not null,
     dataAtendimento date not null,
+    horaAtendimento date not null,
     primary key(cpf)
 );
