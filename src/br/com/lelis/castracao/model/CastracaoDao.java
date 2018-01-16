@@ -14,7 +14,7 @@ import br.com.lelis.castracao.ConnectionFactory;
 
 public class CastracaoDao {
 
-	Connection conn = new ConnectionFactory().getConnection();
+	private Connection conn = new ConnectionFactory().getConnection();
 
 	public void adiciona(Castracao castracao) {
 		String sql = "INSERT INTO "
@@ -79,6 +79,34 @@ public class CastracaoDao {
 		}
 		
 		return castracoes;
+		
+	}
+	
+	public void altera(Castracao castracao) {
+		String sql = "UPDATE castracao SET nome_dono=?, telefone=?, endereco=?, nome_animal=?,especie_animal=?,raca_animal=?"
+				+ ", atendido=?, dataAtendimento=?, horaAtendimento=? WHERE cpf=?";
+		try {
+			PreparedStatement psmt = conn.prepareStatement(sql);
+			psmt.setString(1, castracao.getNomeDono());
+			psmt.setString(2, castracao.getTelefone());
+			psmt.setString(3, castracao.getEndereco());
+			psmt.setString(4, castracao.getNomeAnimal());
+			psmt.setString(5, castracao.getEspecieAnimal());
+			psmt.setString(6, castracao.getRacaAnimal());
+			psmt.setBoolean(7, castracao.isAtendido());
+			psmt.setDate(8, new Date(castracao.getDataAtendimento().getTimeInMillis()));
+			psmt.setTimestamp(9, new Timestamp(castracao.getHoraAtendimento().getTimeInMillis()));
+			psmt.setString(10, castracao.getCpf().substring(0, 3) + "." 
+					+ castracao.getCpf().substring(3, 6) + "." + castracao.getCpf().substring(6, 9) + "-" + castracao.getCpf().substring(9));
+			
+			psmt.execute();
+			
+			psmt.close();
+			conn.close();
+			
+		} catch(SQLException e) {
+			throw new RuntimeException(e);
+		}
 		
 	}
 
