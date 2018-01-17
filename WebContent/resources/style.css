@@ -1,0 +1,49 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #dddddd;
+}
+
+h1{
+	margin-left: 250px;
+}
+
+table {
+	font-size: 1em;
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+
+div#form-castracao{
+	width:900px;
+    background-color:white;
+    margin:1px auto 0px auto;
+    box-shadow:0px 0px 10px rgba(0,0,0,.7);
+    padding:10px;
+    background-color: #FFFAFA;
+}
+
+legend{
+	text-decoration: bold;
+}
+
+
+fieldset{
+	margin:8px;
+}
+
+input{
+	font-family: sans-serif;
+    font-weight: normal;
+    font-size: 12pt;
+    background-color:rgba(255,255,255,.8);
+}
+
+input:hover{
+	background-color:#dddddd;
+}
+
+input#botao{
+	margin-left:8px;
+}
