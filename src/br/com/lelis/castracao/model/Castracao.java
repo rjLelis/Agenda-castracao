@@ -7,7 +7,7 @@ public class Castracao {
 	private String cpf;
 	private String nomeDono;
 	private String telefone;
-	private String Endereco;
+	private String endereco;
 	private String nomeAnimal;
 	private String especieAnimal;
 	private String racaAnimal;
@@ -40,7 +40,7 @@ public class Castracao {
 	}
 
 	public String getEndereco() {
-		return Endereco;
+		return endereco;
 	}
 
 	public void setEndereco(String endereco) {
@@ -97,7 +97,7 @@ public class Castracao {
 	
 	@Override
 	public String toString() {
-		return "Castracao [cpf=" + cpf + ", nomeDono=" + nomeDono + ", telefone=" + telefone + ", Endereco=" + Endereco
+		return "Castracao [cpf=" + cpf + ", nomeDono=" + nomeDono + ", telefone=" + telefone + ", Endereco=" + endereco
 				+ ", nomeAnimal=" + nomeAnimal + ", especieAnimal=" + especieAnimal + ", racaAnimal=" + racaAnimal
 				+ ", atendido=" + atendido + ", dataAtendimento=" + dataAtendimento + ", horaAtendimento="
 				+ horaAtendimento + "]";
