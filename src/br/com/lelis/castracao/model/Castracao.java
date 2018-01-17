@@ -36,7 +36,7 @@ public class Castracao {
 	}
 
 	public void setTelefone(String telefone) {
-		this.telefone = "9" + telefone.substring(0, 4) + "-" + telefone.substring(4);
+		this.telefone = telefone;
 	}
 
 	public String getEndereco() {
@@ -44,7 +44,7 @@ public class Castracao {
 	}
 
 	public void setEndereco(String endereco) {
-		Endereco = endereco;
+		this.endereco = endereco;
 	}
 
 	public String getNomeAnimal() {

@@ -26,7 +26,7 @@ public class CastracaoDao {
 			psmt.setString(1, castracao.getCpf().substring(0, 3) + "." + castracao.getCpf().substring(3, 6) + "."
 					+ castracao.getCpf().substring(6, 9) + "-" + castracao.getCpf().substring(9));
 			psmt.setString(2, castracao.getNomeDono());
-			psmt.setString(3, castracao.getTelefone());
+			psmt.setString(3,"9" +  castracao.getTelefone().substring(0, 4) + "-" + castracao.getTelefone().substring(4));
 			psmt.setString(4, castracao.getEndereco());
 			psmt.setString(5, castracao.getNomeAnimal());
 			psmt.setString(6, castracao.getEspecieAnimal());
@@ -139,7 +139,7 @@ public class CastracaoDao {
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setString(1, castracao.getNomeDono());
-			psmt.setString(2, castracao.getTelefone());
+			psmt.setString(2, "9" +  castracao.getTelefone().substring(0, 4) + "-" + castracao.getTelefone().substring(4));
 			psmt.setString(3, castracao.getEndereco());
 			psmt.setString(4, castracao.getNomeAnimal());
 			psmt.setString(5, castracao.getEspecieAnimal());
