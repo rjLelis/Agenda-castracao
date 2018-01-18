@@ -60,11 +60,15 @@ public class CastracaoDao {
 				castracao.setRacaAnimal(rs.getString("raca_animal"));
 				castracao.setAtendido(rs.getBoolean("atendido"));
 
+				//montando a data
 				Calendar data = Calendar.getInstance();
 				data.setTime(rs.getDate("dataAtendimento"));
 				castracao.setDataAtendimento(data);
-				data.setTime(rs.getTime("horaAtendimento"));
-				castracao.setHoraAtendimento(data);
+				
+				//montando a hora
+				Calendar date = Calendar.getInstance();
+				date.setTime(rs.getTime("horaAtendimento"));
+				castracao.setHoraAtendimento(date);
 
 				castracoes.add(castracao);
 			}
@@ -99,11 +103,15 @@ public class CastracaoDao {
 				castracao.setRacaAnimal(rs.getString("raca_animal"));
 				castracao.setAtendido(rs.getBoolean("atendido"));
 
+				//montando a data
 				Calendar data = Calendar.getInstance();
 				data.setTime(rs.getDate("dataAtendimento"));
 				castracao.setDataAtendimento(data);
-				data.setTime(rs.getTime("horaAtendimento"));
-				castracao.setHoraAtendimento(data);
+				
+				//montando a hora
+				Calendar date = Calendar.getInstance();
+				date.setTime(rs.getTime("horaAtendimento"));
+				castracao.setHoraAtendimento(date);
 
 			}
 			psmt.close();

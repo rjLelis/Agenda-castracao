@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Agendamento de castração</title>
+	<title>Alterar castração</title>
 	<link rel="stylesheet" href="resources/css/jquery-ui.css" />
 	<link rel="stylesheet" href="resources/css/style.css">
 	<script src="resources/js/jquery-1.8.2.js"></script>
@@ -26,31 +28,32 @@
 </head>
 <body>
 	<div id="form-castracao">
-		<h1>Formulário de Castração</h1>
+		<h1>Alterar Castração</h1>
 		<div id=form-div>
-		<form action="adicionaCastracao" method="post">
+		<form action="alteraCastracao" method="post">
 			<fieldset>
 				<legend>Informação do Tutor</legend>
-				<label for="cCpf">CPF </label><input type="text" id="cCpf" name="cpf" size="11" maxlength="11" placeholder="Sem pontuação" required><br>
-				<label for="cNomeDono">Nome </label><input type="text" id="cNomeDono" name="nomeDono" required><br>
-				<label for="cTelefone">Telefone </label><input type="text" id="cTelefone" name="telefone" placeholder="Sem pontuação" size="11" maxlength="8" required><br>
-				<label for="cEndereco">Endereço </label><input type="text" id="cEndereco" name="endereco" size="50" placeholder="Nome da rua e numero da casa" required> <br>
+				<label for="cNomeDono">Nome </label><input type="text" id="cNomeDono" name="nomeDono" required value="${castracao.nomeDono}"><br>
+				<label for="cTelefone">Telefone </label><input type="text" id="cTelefone" name="telefone" placeholder="Sem pontuação" size="11" maxlength="8" required value="${castracao.telefone}"><br>
+				<label for="cEndereco">Endereço </label><input type="text" id="cEndereco" name="endereco" size="50" placeholder="Nome da rua e numero da casa" required value="${castracao.endereco}"> <br>
 			</fieldset>
 			<fieldset>
 				<legend>Informação do animal</legend>
-				<label for="cNomeAnimal">Nome </label><input type="text" id="cNomeAnimal" name="nomeAnimal" required><br>
+				<label for="cNomeAnimal">Nome </label><input type="text" id="cNomeAnimal" name="nomeAnimal" value="${castracao.nomeAnimal}" required><br>
 				<label for="cEspecieAnimal">Espécie </label>
 				<select name="especieAnimal" id="cEspecieAnimal">
+					<option value="${castracao.especieAnimal}">${castracao.especieAnimal}</option>
 					<option value="Cachorro">Cachorro</option>
 					<option value="Gato">Gato</option>
 				</select><br>
-				<label for="cRacaAnimal">Raça </label><input type="text" id="cRacaAnimal" name="racaAnimal" required><br>
-				<label for="datepicker">Data de castração </label><input type="text" id="datepicker" name="dataAtendimento" required><br>
+				<label for="cRacaAnimal">Raça </label><input type="text" id="cRacaAnimal" name="racaAnimal" required value="${castracao.racaAnimal}"><br>
+				<label for="datepicker">Data de castração </label><input type="text" id="datepicker" name="dataAtendimento"  value="<fmt:formatDate value="${castracao.dataAtendimento.time}" pattern="dd/MM/yyyy"/>"required><br>
 				<label for="cHoraCastracao">Hora da castração</label>
 				<select name="horaCastracao" id="cHoraCastracao">
+					<option value="<fmt:formatDate value="${castracao.horaAtendimento.time}" pattern="HH:mm"/>"><fmt:formatDate value="${castracao.horaAtendimento.time}" pattern="HH:mm"/></option>
 					<option value="07:00">07:00</option>
 					<option value="07:30">07:30</option>
-					<option value="08:00">07:00</option>
+					<option value="08:00">08:00</option>
 					<option value="08:30">08:30</option>
 					<option value="09:00">09:00</option>
 					<option value="09:30">09:30</option>

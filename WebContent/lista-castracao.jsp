@@ -41,7 +41,7 @@
 				</c:if>
 			</td>
 			<td><a href="removeCastracao?cpf=${castracao.cpf}">Remover</a></td>
-			<td><a href="">Alterar</a></td>
+			<td><a href="mostraCastracao?cpf=${castracao.cpf}">Alterar</a></td>
 		</tr>
 		</c:forEach>
 	</table><br>

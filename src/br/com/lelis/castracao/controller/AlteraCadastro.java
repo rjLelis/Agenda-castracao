@@ -17,19 +17,16 @@ import br.com.lelis.castracao.model.Castracao;
 import br.com.lelis.castracao.model.CastracaoDao;
 
 /**
- * Servlet implementation class AdicionaCastracao
+ * Servlet implementation class AlteraCadastro
  */
-@WebServlet("/adicionaCastracao")
-public class AdicionaCastracao extends HttpServlet {
+@WebServlet("/alteraCastracao")
+public class AlteraCadastro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
 		String cpf = request.getParameter("cpf");
@@ -70,8 +67,9 @@ public class AdicionaCastracao extends HttpServlet {
 		castracao.setHoraAtendimento(horaAtendimento);
 
 		CastracaoDao dao = new CastracaoDao();
-		dao.adiciona(castracao);
+		dao.altera(castracao);
 		
 		request.getRequestDispatcher("/listaCastracao").forward(request, response);
 	}
+
 }
