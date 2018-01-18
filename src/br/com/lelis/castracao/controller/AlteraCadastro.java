@@ -38,6 +38,7 @@ public class AlteraCadastro extends HttpServlet {
 		String racaAnimal = request.getParameter("racaAnimal");
 		String dataEmTexto = request.getParameter("dataAtendimento");
 		String horaEmTexto = request.getParameter("horaCastracao");
+		String atendido = request.getParameter("atendido");
 		Calendar dataAtendimento = null;
 		Calendar horaAtendimento = null;
 
@@ -63,6 +64,7 @@ public class AlteraCadastro extends HttpServlet {
 		castracao.setNomeAnimal(nomeAnimal);
 		castracao.setEspecieAnimal(especieAnimal);
 		castracao.setRacaAnimal(racaAnimal);
+		castracao.setAtendido(Boolean.parseBoolean(atendido));
 		castracao.setDataAtendimento(dataAtendimento);
 		castracao.setHoraAtendimento(horaAtendimento);
 

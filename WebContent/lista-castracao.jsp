@@ -34,10 +34,10 @@
 			<td><fmt:formatDate value="${castracao.horaAtendimento.time}" pattern="HH:mm"/></td>
 			<td>
 				<c:if test="${castracao.atendido eq false}">
-					<a href="finalizaAtendimento?cpf=${castracao.cpf}">finalizar atendimento</a>		
+					<a href="finalizaAtendimento?cpf=${castracao.cpf}">Finalizar</a>		
 				</c:if>
 				<c:if test="${castracao.atendido eq true}">
-					atendido
+					Atendido
 				</c:if>
 			</td>
 			<td><a href="removeCastracao?cpf=${castracao.cpf}">Remover</a></td>

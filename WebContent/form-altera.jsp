@@ -61,10 +61,12 @@
 					<option value="10:30">10:30</option>
 					<option value="11:00">11:00</option>
 					<option value="11:30">11:30</option>
-				</select>
+				</select> <br>
+				<label for="cAtendido">Atendido </label><input type="checkbox" id="cAtendimento" name="atendido" value="true" ${castracao.atendido ? 'checked' : '' }>
 				<br>
 			</fieldset>
-			<input type="submit" value="AGENDAR" id="botao">
+			<input type="submit" value="ALTERAR" id="botao">
+			<input type="hidden" name="cpf" value="${castracao.cpf}"><br>
 		</form>
 		<a href="listaCastracao">cancelar</a>
 		</div>
