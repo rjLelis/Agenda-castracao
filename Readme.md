@@ -8,3 +8,5 @@ Sisteminha que implementa um CRUD básico em Java com Servlets, para o agendamen
 - MySQL
 - Tomcat 8.5
 - Jsp
+- CSS
+- JSTL
