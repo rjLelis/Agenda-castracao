@@ -72,10 +72,6 @@ public class AdicionaCastracao extends HttpServlet {
 		CastracaoDao dao = new CastracaoDao();
 		dao.adiciona(castracao);
 		
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<p>Castração adicionada</p>");
-		out.println("</body>");
-		out.println("</html>");
+		request.getRequestDispatcher("/listaCastracao").forward(request, response);
 	}
 }

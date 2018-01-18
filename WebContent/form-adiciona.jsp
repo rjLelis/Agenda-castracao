@@ -5,10 +5,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Agendamento de castração</title>
-	<link rel="stylesheet" href="resources/jquery-ui.css" />
-	<link rel="stylesheet" href="resources/style.css">
-	<script src="resources/jquery-1.8.2.js"></script>
-	<script src="resources/jquery-ui.js"></script>
+	<link rel="stylesheet" href="resources/css/jquery-ui.css" />
+	<link rel="stylesheet" href="resources/css/style.css">
+	<script src="resources/js/jquery-1.8.2.js"></script>
+	<script src="resources/js/jquery-ui.js"></script>
   	<script>
   	$(document).ready(function(e) {
   	    $("#datepicker").datepicker({
@@ -27,24 +27,25 @@
 <body>
 	<div id="form-castracao">
 		<h1>Formulário de Castração</h1>
+		<div id=form-div>
 		<form action="adicionaCastracao" method="post">
 			<fieldset>
 				<legend>Informação do Tutor</legend>
-				<label for="cCpf">CPF </label><input type="text" id="cCpf" name="cpf" size="11" maxlength="11" placeholder="Sem pontuação"><br>
-				<label for="cNomeDono">Nome </label><input type="text" id="cNomeDono" name="nomeDono"><br>
-				<label for="cTelefone">Telefone </label><input type="text" id="cTelefone" name="telefone" placeholder="Sem pontuação" size="11" maxlength="8"><br>
-				<label for="cEndereco">Endereço </label><input type="text" id="cEndereco" name="endereco" size="50" placeholder="Nome da rua e numero da casa"> <br>
+				<label for="cCpf">CPF </label><input type="text" id="cCpf" name="cpf" size="11" maxlength="11" placeholder="Sem pontuação" required><br>
+				<label for="cNomeDono">Nome </label><input type="text" id="cNomeDono" name="nomeDono" required><br>
+				<label for="cTelefone">Telefone </label><input type="text" id="cTelefone" name="telefone" placeholder="Sem pontuação" size="11" maxlength="8" required><br>
+				<label for="cEndereco">Endereço </label><input type="text" id="cEndereco" name="endereco" size="50" placeholder="Nome da rua e numero da casa" required> <br>
 			</fieldset>
 			<fieldset>
 				<legend>Informação do animal</legend>
-				<label for="cNomeAnimal">Nome </label><input type="text" id="cNomeAnimal" name="nomeAnimal"><br>
+				<label for="cNomeAnimal">Nome </label><input type="text" id="cNomeAnimal" name="nomeAnimal" required><br>
 				<label for="cEspecieAnimal">Espécie </label>
 				<select name="especieAnimal" id="cEspecieAnimal">
 					<option value="Cachorro">Cachorro</option>
 					<option value="Gato">Gato</option>
 				</select><br>
-				<label for="cRacaAnimal">Raça </label><input type="text" id="cRacaAnimal" name="racaAnimal"><br>
-				<label for="datepicker">Data de castração </label><input type="text" id="datepicker" name="dataAtendimento"><br>
+				<label for="cRacaAnimal">Raça </label><input type="text" id="cRacaAnimal" name="racaAnimal" required><br>
+				<label for="datepicker">Data de castração </label><input type="text" id="datepicker" name="dataAtendimento" required><br>
 				<label for="cHoraCastracao">Hora da castração</label>
 				<select name="horaCastracao" id="cHoraCastracao">
 					<option value="07:00">07:00</option>
@@ -61,7 +62,9 @@
 				<br>
 			</fieldset>
 			<input type="submit" value="AGENDAR" id="botao">
-		</form>
+		</form><br>
+		<a href="listaCastracao">cancelar</a>
+		</div>
 	</div>
 </body>
 </html>

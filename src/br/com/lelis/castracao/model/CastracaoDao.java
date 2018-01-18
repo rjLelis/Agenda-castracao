@@ -85,8 +85,7 @@ public class CastracaoDao {
 		Castracao castracao = null;
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
-			psmt.setString(1, cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-"
-					+ cpf.substring(9));
+			psmt.setString(1, cpf);
 			ResultSet rs = psmt.executeQuery();
 
 			if (rs.next()) {
@@ -121,8 +120,7 @@ public class CastracaoDao {
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setBoolean(1, true);
-			psmt.setString(2, cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-"
-					+ cpf.substring(9));
+			psmt.setString(2, cpf);
 
 			psmt.execute();
 
@@ -139,7 +137,7 @@ public class CastracaoDao {
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setString(1, castracao.getNomeDono());
-			psmt.setString(2, "9" +  castracao.getTelefone().substring(0, 4) + "-" + castracao.getTelefone().substring(4));
+			psmt.setString(2, castracao.getTelefone());
 			psmt.setString(3, castracao.getEndereco());
 			psmt.setString(4, castracao.getNomeAnimal());
 			psmt.setString(5, castracao.getEspecieAnimal());
@@ -147,8 +145,7 @@ public class CastracaoDao {
 			psmt.setBoolean(7, castracao.isAtendido());
 			psmt.setDate(8, new Date(castracao.getDataAtendimento().getTimeInMillis()));
 			psmt.setTimestamp(9, new Timestamp(castracao.getHoraAtendimento().getTimeInMillis()));
-			psmt.setString(10, castracao.getCpf().substring(0, 3) + "." + castracao.getCpf().substring(3, 6) + "."
-					+ castracao.getCpf().substring(6, 9) + "-" + castracao.getCpf().substring(9));
+			psmt.setString(10, castracao.getCpf());
 
 			psmt.execute();
 
@@ -164,8 +161,7 @@ public class CastracaoDao {
 		String sql = "DELETE FROM castracao WHERE cpf=?";
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
-			psmt.setString(1, cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-"
-					+ cpf.substring(9));
+			psmt.setString(1,cpf);
 
 			psmt.execute();
 
