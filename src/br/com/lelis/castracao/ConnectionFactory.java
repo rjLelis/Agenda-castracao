@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-	private String DATA_BASE = "castracao";
-	private String URL = "jdbc:mysql://localhost/" + DATA_BASE;
-	private String USER = "root";
-	private String PASSWORD = "123456";
+	private static final String DATA_BASE = "castracao";
+	private static final String URL = "jdbc:mysql://localhost/" + DATA_BASE;
+	private static final String USER = "root";
+	private static final String PASSWORD = "123456";
 
 	public Connection getConnection() {
 		Connection conn = null;
