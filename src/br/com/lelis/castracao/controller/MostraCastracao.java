@@ -29,7 +29,7 @@ public class MostraCastracao extends HttpServlet {
 		Castracao castracao = dao.listar(cpf);
 		
 		request.setAttribute("castracao", castracao);
-		request.getRequestDispatcher("form-altera.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/form-altera.jsp").forward(request, response);
 		
 	}
 

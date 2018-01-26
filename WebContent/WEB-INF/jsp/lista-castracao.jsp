@@ -41,12 +41,13 @@
 				</c:if>
 			</td>
 			<td><a href="removeCastracao?cpf=${castracao.cpf}">Remover</a></td>
-			<td><a href="mostraCastracao?cpf=${castracao.cpf}">Alterar</a></td>
+			<td><a href="redirecionaController?cpf=${castracao.cpf}">Alterar</a></td>
 		</tr>
 		</c:forEach>
 	</table><br>
-	<form action="form-adiciona.jsp">
+	<form action="redirecionaController">
 		<input type="submit" value="Agendar uma castração">
+		<input type="hidden" name="cpf" value=""/>
 	</form>
 </div>
 </body>
