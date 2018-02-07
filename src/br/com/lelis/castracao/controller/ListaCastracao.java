@@ -30,7 +30,7 @@ public class ListaCastracao extends HttpServlet {
 		
 		request.setAttribute("castracoes", castracoes);
 		
-		request.getRequestDispatcher("/WEB-INF/jsp/lista-castracao.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/jsp/lista-castracao.jsp").forward(request, response);
 		
 		
 	}
